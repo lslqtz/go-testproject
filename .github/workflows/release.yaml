@@ -1,0 +1,21 @@
+name: 'Release-Go-Binary'
+
+on:
+  release:
+    types: ['created']
+
+jobs:
+  Release-Go-Binary:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - name: 'Checkout'
+      uses: 'actions/checkout@v4'
+    - name: 'Build'
+      uses: 'lslqtz/go-release-action@master'
+      with:
+        goos: 'linux'
+        goarch: 'amd64'
+        goversion: 1.19
+        md5sum: false
+        sha256sum: false
+        binary_name: 'go-testproject'

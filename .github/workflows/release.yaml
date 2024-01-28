@@ -23,5 +23,5 @@ jobs:
     - name: 'Upload GitHub Artifact'
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ steps.release.outputs.release_asset_file }}
+        name: ${{ steps.release.outputs.release_asset_name }}
         path: ${{ steps.release.outputs.release_asset_dir }}/*

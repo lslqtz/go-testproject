@@ -18,6 +18,8 @@ jobs:
         md5sum: false
         sha256sum: false
         binary_name: 'go-testproject'
+    - name: 'Test'
+      run: env
     - name: 'Echo outputs'
       run: echo ${{join(steps.release.outputs.*, '\n')}}
     - name: 'Upload GitHub Artifact'

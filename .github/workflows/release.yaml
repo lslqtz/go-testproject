@@ -18,8 +18,11 @@ jobs:
         md5sum: false
         sha256sum: false
         binary_name: 'go-testproject'
+    - name: 'Test'
+      id: test
+      run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
     - name: 'Echo outputs'
-      run: echo ${{join(steps.release.outputs.*, '\n')}}
+      run: echo ${{join(steps.release.outputs.*, '\n')}} && echo ${{join(steps.test.outputs.*, '\n')}}
     - name: 'Upload GitHub Artifact'
       uses: actions/upload-artifact@v4
       with:

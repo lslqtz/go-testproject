@@ -1,6 +1,9 @@
 name: 'Release-Go-Binary'
 
-on: 'workflow_dispatch'
+on:
+  workflow_dispatch:
+  release:
+    types: ['created']
 
 jobs:
   Release-Go-Binary:

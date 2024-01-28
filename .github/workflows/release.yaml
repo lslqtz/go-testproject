@@ -18,6 +18,8 @@ jobs:
         md5sum: false
         sha256sum: false
         binary_name: 'go-testproject'
+    - name: 'Echo outputs'
+      run: echo "${{ steps.release.outputs.RELEASE_ASSET_FILE }}, ${{ steps.release.outputs.RELEASE_ASSET_PATH }}"
     - name: 'Upload GitHub Artifact'
       uses: actions/upload-artifact@v4
       with:

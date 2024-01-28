@@ -19,9 +19,9 @@ jobs:
         sha256sum: false
         binary_name: 'go-testproject'
     - name: 'Echo outputs'
-      run: echo ${{join(steps.release.outputs.*, '\n')}}
+      run: echo ${{join(steps.release.outputs.*, ', ')}}
     - name: 'Upload GitHub Artifact'
       uses: actions/upload-artifact@v4
       with:
         name: ${{ steps.release.outputs.release_asset_file }}
-        path: ${{ steps.release.outputs.release_asset_path }}
+        path: ${{ steps.release.outputs.release_asset_dir }}/*

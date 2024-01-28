@@ -1,8 +1,6 @@
 name: 'Release-Go-Binary'
 
-on:
-  release:
-    types: ['created']
+on: 'workflow_dispatch'
 
 jobs:
   Release-Go-Binary:
@@ -13,9 +11,16 @@ jobs:
     - name: 'Build'
       uses: 'lslqtz/go-release-action@master'
       with:
+        id: release
         goos: 'linux'
         goarch: 'amd64'
         goversion: 1.19
         md5sum: false
         sha256sum: false
         binary_name: 'go-testproject'
+    - name: 'Upload GitHub Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ steps.release.outputs.RELEASE_ASSET_FILE }}
+        path: ${{ steps.release.outputs.RELEASE_ASSET_PATH }}
+  

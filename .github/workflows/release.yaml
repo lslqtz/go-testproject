@@ -23,6 +23,7 @@ jobs:
         sha256sum: false
         binary_name: 'go-testproject'
         extra_files: 'README.md'
+        post_command: echo test ${{ steps.release.outputs.release_asset_dir }}
     - name: 'Echo outputs'
       run: echo ${{join(steps.release.outputs.*, ', ')}}
     - name: 'Upload GitHub Artifact'

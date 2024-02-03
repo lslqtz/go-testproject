@@ -27,7 +27,7 @@ jobs:
     - name: Set build name
       if: ${{ github.event_name != 'release' }}
       id: build_name
-      run: echo ::set-output name=$(basename ${GITHUB_REF})
+      run: echo "name=$(basename ${GITHUB_REF})" >> "${GITHUB_OUTPUT}"
     - name: 'Upload GitHub Artifact'
       uses: actions/upload-artifact@v4
       with:

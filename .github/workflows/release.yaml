@@ -31,5 +31,5 @@ jobs:
     - name: 'Upload GitHub Artifact'
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ github.event.repository.name }}-${{ steps.build_name.outputs.name }}-${{ matrix.goos }}-${{ matrix.goarch }}
+        name: ${{ github.event.repository.name }}-${{ steps.build_name.outputs.name }}-linux-amd64
         path: ${{ steps.release.outputs.release_asset_dir }}

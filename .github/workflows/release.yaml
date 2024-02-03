@@ -24,8 +24,12 @@ jobs:
         sha256sum: false
         binary_name: 'go-testproject'
         extra_files: 'README.md'
+    - name: Set build name
+      if: ${{ github.event_name != 'release' }}
+      id: build_name
+      run: echo ::set-output name=$(basename ${GITHUB_REF})
     - name: 'Upload GitHub Artifact'
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ github.event.repository.name }}-${GITHUB_REF##*/}-linux-arm64
+        name: ${{ github.event.repository.name }}-${{ steps.build_name.outputs.name }}-${{ matrix.goos }}-${{ matrix.goarch }}
         path: ${{ steps.release.outputs.release_asset_dir }}

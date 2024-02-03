@@ -27,5 +27,5 @@ jobs:
     - name: 'Upload GitHub Artifact'
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}-linux-arm64
+        name: ${{ github.event.repository.name }}-${GITHUB_REF##*/}-linux-arm64
         path: ${{ steps.release.outputs.release_asset_dir }}

@@ -16,7 +16,7 @@ jobs:
       id: release
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        upload: false
+        upload: true
         goos: 'linux'
         goarch: 'amd64'
         goversion: 1.19
